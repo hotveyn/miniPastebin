@@ -1,0 +1,20 @@
+{
+  "name": "minipastebin",
+  "version": "0.0.1",
+  "description": "pastebin microservices system for made for learning lgtm stack",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hotveyn/miniPastebin.git"
+  },
+  "author": "bebricks",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hotveyn/miniPastebin/issues"
+  },
+  "homepage": "https://github.com/hotveyn/miniPastebin#readme",
+  "workspaces":[
+    "./agw",
+    "./auth",
+    "./pastebin"
+  ]
+}
