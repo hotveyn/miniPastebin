@@ -1,0 +1,1 @@
+export type WT<T> = T;
