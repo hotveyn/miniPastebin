@@ -16,6 +16,7 @@
     "./agw",
     "./auth",
     "./pastebin",
-    "./user"
+    "./user",
+    "./common"
   ]
 }
