@@ -15,12 +15,10 @@ services:
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
+      POSTGRES_DB: user
     volumes:
-      - type: tmpfs
-        target: /dev/shm
-        tmpfs:
-          size: 134217728 # 128*2^20 bytes = 128Mb
-      - ./migrations:/docker-entrypoint-initdb.d/
+      - ./migrations/up:/docker-entrypoint-initdb.d/
+      # - .dev/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "callcenter", "-d", "callcenter"]
       interval: 5s
