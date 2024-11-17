@@ -1,0 +1,28 @@
+services:
+
+  redis:
+    image: redis:7.4.1-alpine
+    healthcheck:
+      test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+    ports:
+      - 6379:6379
+
+  posgresql:
+    image: postgres:17.1-alpine3.20
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: user
+    volumes:
+      - ./migrations/up:/docker-entrypoint-initdb.d/
+      # - .dev/postgresql.conf:/var/lib/postgresql/data/postgresql.conf
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "callcenter", "-d", "callcenter"]
+      interval: 5s
+      timeout: 10s
+      retries: 5
+    ports:
+      - 5432:5432
